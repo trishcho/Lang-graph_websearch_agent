@@ -111,6 +111,10 @@ ipython_config.py
 .pdm-python
 .pdm-build/
 
+# Ignore sensitive configuration files
+config.yaml.save
+config/config.yaml
+
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
 
