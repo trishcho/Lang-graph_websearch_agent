@@ -3,14 +3,13 @@ from datetime import datetime, timezone
 import yaml
 from textwrap import wrap
 
-
 # for loading configs to environment variables
 def load_config(file_path):
     # Define default values
     default_values = {
         'SERPER_API_KEY': 'default_serper_api_key',
         'OPENAI_API_KEY': 'default_openai_api_key',
-        'SERPER_API_KEY': 'default_groq_api_key',
+        'GROQ_API_KEY': 'default_groq_api_key',  # Corrected the duplicate key
     }
     
     with open(file_path, 'r') as file:
@@ -20,12 +19,7 @@ def load_config(file_path):
             if not value:
                 os.environ[key] = default_values.get(key, '')
             else:
-                os.environ[key] = value
-# def load_config(file_path):
-#     with open(file_path, 'r') as file:
-#         config = yaml.safe_load(file)
-#         for key, value in config.items():
-#             os.environ[key] = value
+                os.environ[key] = str(value)  # Convert value to string before setting it as an environment variable
 
 # for getting the current date and time in UTC
 def get_current_utc_datetime():
@@ -42,40 +36,7 @@ def check_for_content(var):
         except:
             return var
     else:
-        var
-
-
-# def custom_print(message, stdscr=None):
-#     if stdscr:
-#         max_y, max_x = stdscr.getmaxyx()
-#         max_y -= 2  # Leave room for a status line at the bottom
-
-#         lines = message.split("\n")
-#         for line in lines:
-#             wrapped_lines = wrap(line, max_x)
-#             for wrapped_line in wrapped_lines:
-#                 current_y, current_x = stdscr.getyx()
-#                 if current_y >= max_y:
-#                     stdscr.addstr(max_y, 0, "-- More --")
-#                     stdscr.refresh()
-#                     key = stdscr.getch()  # Wait for user to press a key
-
-#                     if key == ord('q'):
-#                         stdscr.clear()
-#                         stdscr.addstr(0, 0, "Exiting...")
-#                         stdscr.refresh()
-#                         return
-
-#                     stdscr.clear()
-#                     current_y = 0
-
-#                 stdscr.addstr(current_y, 0, wrapped_line[:max_x])
-#                 stdscr.addstr(current_y + 1, 0, "")  # Move to the next line
-#                 stdscr.refresh()
-
-#         stdscr.refresh()
-#     else:
-#         print(message)
+        return None
 
 def custom_print(message, stdscr=None, scroll_pos=0):
     if stdscr:
