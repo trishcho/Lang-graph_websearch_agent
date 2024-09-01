@@ -25,12 +25,12 @@
 ### Clone and Navigate to the Repository
 1. **Clone the Repo:**
    ```bash
-   git clone https://github.com/john-adeojo/graph_websearch_agent.git
+   git clone https://github.com/trishcho/Lang-graph_websearch_agent.git
    ```
 
 2. **Navigate to the Repo:**
    ```bash
-   cd /path/to/your-repo/graph_websearch_agent
+   cd /path/to/your-repo/Lang-graph_websearch_agent
    ```
 
 3. **Install Requirements:**
